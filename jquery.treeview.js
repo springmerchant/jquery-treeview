@@ -8,7 +8,19 @@
  *   http://www.opensource.org/licenses/mit-license.php
  */
 
-;(function($) {
+;(function(factory) { // eslint-disable-line no-extra-semi
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        // AMD
+        define(['jquery'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) {
+        // CommonJS
+        module.exports = factory(require('jquery'));
+    } else {
+        // Global
+        factory(jQuery);
+    }
+})(function($) {
 
 	// TODO rewrite as a widget, removing all the extra plugins
 	$.extend($.fn, {
@@ -247,4 +259,4 @@
 		hitarea: "hitarea"
 	});
 
-})(jQuery);
+});
